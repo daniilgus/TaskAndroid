@@ -71,9 +71,12 @@
             <option value="Исполнитель">Исполнитель</option>
         </select>
         <button onclick="register()">Зарегистрироваться</button>
+        <button onclick="redirectToIndex()">На главную страницу</button> <!-- Кнопка для перехода на index.html -->
     </div>
 
     <script>
+        const baseUrl = 'https://taskandroid-production.up.railway.app'; // Ваш URL на Railway
+
         async function register() {
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
@@ -82,7 +85,7 @@
             const role = document.getElementById('role').value;
 
             try {
-                const response = await fetch('http://localhost:3000/register', {
+                const response = await fetch(`${baseUrl}/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -107,6 +110,9 @@
             }
         }
 
+        function redirectToIndex() {
+            window.location.href = 'index.html'; // Перенаправление на главную страницу
+        }
     </script>
     
 </body>
