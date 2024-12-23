@@ -2,6 +2,7 @@ const express = require('express');
 const { Pool } = require('pg');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path'); // Импортируем модуль path
 
 const app = express();
 const port = process.env.PORT || 3000; // Используем переменную окружения PORT
@@ -19,9 +20,12 @@ const pool = new Pool({
 app.use(cors());
 app.use(bodyParser.json());
 
+// Настройка статических файлов
+app.use(express.static(path.join(__dirname))); // Указываем корневую папку проекта для статических файлов
+
 // Обработчик для корневого маршрута
 app.get('/', (req, res) => {
-    res.send('Добро пожаловать на главную страницу!');
+    res.sendFile(path.join(__dirname, 'index.html')); // Отправляем index.html
 });
 
 // Эндпоинт для получения списка пользователей
