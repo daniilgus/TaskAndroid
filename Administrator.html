@@ -174,9 +174,11 @@
     </div>
 
     <script>
+        const baseUrl = 'https://taskandroid-production.up.railway.app'; // Ваш URL на Railway
+
         async function loadUsers() {
             try {
-                const response = await fetch('http://localhost:3000/users');
+                const response = await fetch(`${baseUrl}/users`);
                 if (!response.ok) {
                     throw new Error('Ошибка сети: ' + response.statusText);
                 }
@@ -233,7 +235,7 @@
             const salary = document.getElementById('salary').value; // Получаем зарплату
 
             try {
-                const response = await fetch(`http://localhost:3000/users/${userId}`, {
+                const response = await fetch(`${baseUrl}/users/${userId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -261,7 +263,7 @@
             const userId = selectedLi.getAttribute('data-user-id');
 
             try {
-                const response = await fetch(`http://localhost:3000/users/${userId}`, {
+                const response = await fetch(`${baseUrl}/users/${userId}`, {
                     method: 'DELETE',
                 });
 
@@ -286,7 +288,7 @@
 
         async function searchUsers() {
             const searchTerm = document.getElementById('search').value.toLowerCase();
-            const response = await fetch('http://localhost:3000/users');
+            const response = await fetch(`${baseUrl}/users`);
             const users = await response.json();
 
             const userList = document.getElementById('userList');
