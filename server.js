@@ -13,7 +13,7 @@ const pool = new Pool({
     host: 'postgres.railway.internal',
     database: 'railway',
     password: 'XOYbYNQomdWpYruaKnuGfemAlYGevTsV',
-    port: 8080,
+    port: 5432,
 });
 
 // Middleware
